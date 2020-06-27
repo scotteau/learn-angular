@@ -7,18 +7,13 @@ ul {
   align-items: center;
 
   li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.5rem;
-    width: 50%;
+    margin-bottom: 0.25rem;
+    width: 60%;
 
-    [title] {
-      font-weight: bold;
-    }
-
-    [description] {
-      margin-left: 2rem;
-      color: darkgray;
+    :hover {
+      background: orangered;
+      color: #fff;
+      cursor: pointer;
     }
   }
 }

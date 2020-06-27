@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Directive, ElementRef} from '@angular/core';
 
 interface item {
   name: string,
@@ -15,33 +15,27 @@ interface item {
       <p description>This is a sample project to learn how angular project is structured.</p>
     </app-title>
 
-    <ng-container>
-      <ul class="list">
-        <li class="list-item" *ngFor="let item of items">
-          <div class="title">
-            <input class="checkbox" type="checkbox"/>
-            <span title>{{item.name}}</span>
-          </div>
-          <span description>{{item.description | titlecase}}</span>
-        </li>
-      </ul>
-    </ng-container>
+    <ul class="list">
+      <li class="list-item" *ngFor="let item of items; index as i">
+        <app-item [item]="item" [index]="i"></app-item>
+      </li>
+    </ul>
   `
 })
 export class AppComponent {
   title = 'learn-angular';
 
   items: item[] = [
-    {name: '@input', description: 'input data into component', isDone: false},
+    {name: '@input', description: 'input data into component', isDone: true},
     {name: '@output', description: 'using event emitter', isDone: false},
-    {name: 'ng-content', description: 'Learn how to project content using ng-content', isDone: false},
-    {name: `inline template & style`, description: 'Playing with inline template & style', isDone: false},
-    {name: 'ng-template', description: 'Learn how to use ng-template in ngIf & template-outlet', isDone: false},
-    {name: 'ngIf', description: 'Experimenting with conditional rendering in angular', isDone: false},
+    {name: 'ng-content', description: 'Learn how to project content using ng-content', isDone: true},
+    {name: `inline template & style`, description: 'Playing with inline template & style', isDone: true},
+    {name: 'ng-template', description: 'Learn how to use ng-template in ngIf & template-outlet', isDone: true},
+    {name: 'ngIf', description: 'Experimenting with conditional rendering in angular', isDone: true},
     {name: 'ngSwitch', description: 'Playing with ngSwitch', isDone: false},
     {name: 'ngStyle', description: 'Using ngStyle', isDone: false},
-    {name: 'ngClass', description: 'Playing with ngClass', isDone: false},
-    {name: 'ngFor', description: 'Rendering list using ngFor', isDone: false},
+    {name: 'ngClass', description: 'Playing with ngClass', isDone: true},
+    {name: 'ngFor', description: 'Rendering list using ngFor', isDone: true},
     {name: 'Pipes', description: 'Playing with angular pipes', isDone: false},
     {name: '@ViewChild', description: 'Local query using viewChild', isDone: false},
     {name: '@ContentChild', description: 'Using query using ContentChild', isDone: false},

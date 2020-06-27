@@ -1,0 +1,27 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.25rem;
+
+  .checkbox {
+    margin-right: 0.5rem;
+  }
+
+  [title] {
+    font-weight: bold;
+
+    .emoji {
+      margin-left: 0.25rem;
+    }
+  }
+
+  [description] {
+    color: darkgray;
+  }
+
+
+  .done {
+    text-decoration: line-through;
+    color: darkgray;
+  }
+}
