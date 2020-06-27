@@ -5,6 +5,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 1rem 0;
 
   li {
     margin-bottom: 0.25rem;
@@ -14,6 +15,7 @@ ul {
       background: orangered;
       color: #fff;
       cursor: pointer;
+
     }
   }
 }

@@ -1,6 +1,6 @@
-import {Component, Directive, ElementRef} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 
-interface item {
+interface Item {
   name: string,
   description: string,
   isDone: boolean
@@ -11,21 +11,22 @@ interface item {
   styleUrls: ['./app.component.scss'],
   template: `
     <app-title>
-      <h1 title>Learn Angular</h1>
+      <h1 title #title>Learn Angular</h1>
       <p description>This is a sample project to learn how angular project is structured.</p>
     </app-title>
 
     <ul class="list">
-      <li class="list-item" *ngFor="let item of items; index as i">
+      <li class="list-item" *ngFor="let item of items; index as i" (click)="handleClick($event, item)">
         <app-item [item]="item" [index]="i"></app-item>
       </li>
     </ul>
   `
 })
-export class AppComponent {
-  title = 'learn-angular';
+export class AppComponent implements OnInit, AfterViewInit {
 
-  items: item[] = [
+  @ViewChild('title', {read: ElementRef}) title: ElementRef;
+
+  items: Item[] = [
     {name: '@input', description: 'input data into component', isDone: true},
     {name: '@output', description: 'using event emitter', isDone: false},
     {name: 'ng-content', description: 'Learn how to project content using ng-content', isDone: true},
@@ -46,4 +47,15 @@ export class AppComponent {
     {name: '@HostListener', description: 'Learn how to use HostListener', isDone: false},
     {name: 'Service', description: 'Injecting service to component', isDone: false}
   ];
+
+  ngOnInit(): void {
+  }
+
+  ngAfterViewInit(): void {
+    console.log(this.title);
+  }
+
+  handleClick(event: MouseEvent, item: Item) {
+    item.isDone = !item.isDone;
+  }
 }
