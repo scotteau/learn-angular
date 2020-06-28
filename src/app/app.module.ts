@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {TitleComponent} from './components/title/title.component';
+import {AppComponent, TaskItemDirective} from './app.component';
+import {HoverDirective, TitleComponent} from './components/title/title.component';
 import {ItemComponent} from './components/item/item.component';
 
 @NgModule({
@@ -10,6 +10,8 @@ import {ItemComponent} from './components/item/item.component';
     AppComponent,
     TitleComponent,
     ItemComponent,
+    HoverDirective,
+    TaskItemDirective
   ],
   imports: [
     BrowserModule

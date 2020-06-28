@@ -1,10 +1,37 @@
-import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
+import {Component, Directive, ElementRef, HostBinding, HostListener, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {DataService} from './services/data.service';
 
 export interface Item {
   name: string,
   description: string,
   isDone: boolean
+}
+
+@Directive({
+  selector: 'li[TaskItem]'
+})
+
+export class TaskItemDirective {
+  @Input('TaskItem') shouldShow = false;
+
+  @HostBinding('class.isDone')
+  get determineClass() {
+    return this.shouldShow;
+  }
+
+  @HostBinding('className')
+  get taskItem() {
+    return 'taskItem';
+  }
+
+  @HostListener('click', ['$event'])
+  onClick(event) {
+    console.log(event);
+  }
+
+  constructor() {
+    console.log('taskItem Directive');
+  }
 }
 
 @Component({
@@ -17,7 +44,11 @@ export interface Item {
     </app-title>
 
     <ul class="list">
-      <li class="list-item" *ngFor="let item of items; index as i" (click)="handleClick($event, item)">
+      <li class="list-item"
+          *ngFor="let item of items; index as i"
+          (click)="handleClick($event, item)"
+          [TaskItem]="item.isDone"
+      >
         <app-item [item]="item" [index]="i"></app-item>
       </li>
     </ul>

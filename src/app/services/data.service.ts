@@ -21,10 +21,10 @@ export class DataService {
     {name: '@ViewChild', description: 'Local query using viewChild', isDone: true},
     {name: '@ContentChild', description: 'Using query using ContentChild', isDone: true},
     {name: 'renderer', description: 'Experimenting with renderer', isDone: true},
-    {name: '@Directive - Attributes', description: 'Playing with attributes directives', isDone: false},
+    {name: '@Directive - Attributes', description: 'Playing with attributes directives', isDone: true},
     {name: '@Directive - Structure', description: 'Playing with structure directives', isDone: false},
-    {name: '@HostBinding', description: 'Learn how to use HostBinding', isDone: false},
-    {name: '@HostListener', description: 'Learn how to use HostListener', isDone: false},
+    {name: '@HostBinding', description: 'Learn how to use HostBinding', isDone: true},
+    {name: '@HostListener', description: 'Learn how to use HostListener', isDone: true},
     {name: 'Service', description: 'Injecting service to component', isDone: true}
   ];
 

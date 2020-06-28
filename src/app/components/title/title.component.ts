@@ -1,11 +1,22 @@
-import {AfterContentInit, Component, ContentChild, ElementRef, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Directive, HostBinding} from '@angular/core';
+
+@Directive({
+  selector: '[hover]',
+})
+
+export class HoverDirective {
+  @HostBinding('style')
+  get renderStyle() {
+    return {background: 'crimson'};
+  }
+}
 
 @Component({
   selector: 'app-title',
   template: `
     <ng-content select="[title]"></ng-content>
     <ng-content select="[description]"></ng-content>
-    <button (click)="handleClick($event)">toggle color</button>
+    <button (click)="handleClick($event)" hover>toggle color</button>
   `,
   styles: [`
     :host {
@@ -25,10 +36,8 @@ import {AfterContentInit, Component, ContentChild, ElementRef, OnInit, Output, E
     }
   `]
 })
-export class TitleComponent implements OnInit, AfterContentInit {
+export class TitleComponent implements OnInit {
 
-  @ContentChild('title') title;
-  @ContentChild('description') description: ElementRef;
 
   @Output()
   toggleColor = new EventEmitter();
@@ -39,10 +48,6 @@ export class TitleComponent implements OnInit, AfterContentInit {
   ngOnInit(): void {
   }
 
-  ngAfterContentInit(): void {
-    console.log(this.title);
-    console.log(this.description);
-  }
 
   handleClick(event: MouseEvent) {
     this.toggleColor.emit({

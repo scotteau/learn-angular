@@ -9,12 +9,19 @@ ul {
   li {
     margin-bottom: 0.25rem;
     width: 60%;
+  }
+}
 
-    :hover {
-      background: orangered;
-      color: #fff;
-      cursor: pointer;
 
-    }
+.isDone {
+  background: rgba(lightgray, 0.2);
+  border-radius: 0.25rem;
+}
+
+.taskItem {
+  :hover {
+    background: orangered;
+    color: #fff;
+    cursor: pointer;
   }
 }
