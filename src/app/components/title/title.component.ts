@@ -17,6 +17,7 @@ export class HoverDirective {
     <ng-content select="[title]"></ng-content>
     <ng-content select="[description]"></ng-content>
     <button (click)="handleClick($event)" hover>toggle color</button>
+
   `,
   styles: [`
     :host {
